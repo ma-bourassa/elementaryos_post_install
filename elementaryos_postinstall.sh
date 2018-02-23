@@ -41,7 +41,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "Initial configuration" "Elementary OS ONLY! Disable single click and enable super as application hotkey" \
 	FALSE "Delete default apps" "Elementary OS ONLY! Delete mail, calendar, epiphany browser and audience" \
 	FALSE "Tweaks" "Elementary OS ONLY! Install Elementary Tweaks for additionnal options." \
-	FALSE "elementaryplus" "Elementary OS ONLY! Install elementary plus icons theme." \
 	TRUE "Speed-Up Memory Action" "Install preload and zRAM." \
 	TRUE "TLP" "Install TLP for better battery life." \
 	TRUE "Build essential" "Install dpkg-dev, gcc, g++, libc and make." \
@@ -147,23 +146,18 @@ then
 	echo "elementary Tweaks installation..."
 	echo ""
 	sudo add-apt-repository -y  ppa:philip.scott/elementary-tweaks
+	sudo add-apt-repository -y ppa:noobslab/icons
+	sudo add-apt-repository -y ppa:ricotz/docky
 	sudo apt -y update
+	sudo apt -y upgrade
 	sudo apt -y install elementary-tweaks
-fi
-
-# Install elementaryplus
-if [[ $GUI == *"elementaryplus"* ]]
-then
-	clear
-	echo "elementaryplus icons theme installation..."
-	echo ""
-	sudo add-apt-repository -y ppa:cybre/elementaryplus
-	sudo apt-get -y update
-	sudo apt-get -y install elementaryplus
+	sudo apt-get -y install elementary-add-icons
+	sudo apt install -y --reinstall plank
+	killall plank
 fi
 
 # Install ArcOSX theme
-if [[ $GUI == *"Tweaks"* ]]
+if [[ $GUI == *"ArcOSX Theme"* ]]
 then
 	clear
 	echo "ArcOSX theme installation..."
@@ -382,7 +376,7 @@ then
 	echo "Skype installation..."
 	echo ""
 	sudo wget -O /tmp/skypeforlinux-64.deb https://go.skype.com/skypeforlinux-64.deb
-	sudo gdebi --non-interactive/tmp/skypeforlinux-64.deb
+	sudo gdebi --non-interactive /tmp/skypeforlinux-64.deb
 fi
 
 # Install Pushbullet
