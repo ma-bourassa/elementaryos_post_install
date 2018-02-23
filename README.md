@@ -3,11 +3,13 @@
 This script provide a GUI to install third party softwares on Elementary OS Loki.
 The script will automatically install Git and Gdebi unless they are already installed.
 
+![Screenshot](elementaryOS_zenity.png)
+
 # Author
 
 Marc-André Bourassa
 
-# Dependencies
+# How to run
 First, copy this line in a terminal :
 ```
 sudo apt -y install software-properties-common python-software-properties software-properties-common -y
