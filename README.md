@@ -22,7 +22,7 @@ wget -O /tmp/elementaryos_postinstall.sh https://raw.githubusercontent.com/bouhr
 ```
 To enable open folder as root : 
 ```
-sudo touch /usr/share/contractor/folder-openasroot.contract && gksudo scratch-text-editor /usr/share/contractor/folder-openasroot.contract
+sudo touch /usr/share/contractor/folder-openasroot.contract && gksudo gedit /usr/share/contractor/folder-openasroot.contract
 ```
 When the file opens, paste below context and close the file (It’ll be saved automatically).
 ```
@@ -37,17 +37,17 @@ Gettext-Domain=pantheon-files
 
 To enable open file as root : 
 ```
-sudo touch /usr/share/contractor/file-openasroot.contract && gksudo scratch-text-editor /usr/share/contractor/file-openasroot.contract
+sudo touch /usr/share/contractor/file-openasroot.contract && gksudo gedit /usr/share/contractor/file-openasroot.contract
 ```
 When the file opens, paste below and close it.
 ```
 [Contractor Entry]
 Name=Open file as root
-Icon=scratch-text-editor
-Description=open file as root with scratch
+Icon=gedit
+Description=open file as root with gedit
 MimeType=text
-Exec=gksudo scratch-text-editor %U
-Gettext-Domain=scratch-text-editor
+Exec=gksudo gedit %U
+Gettext-Domain=gedit
 ```
 
 # Supported platforms

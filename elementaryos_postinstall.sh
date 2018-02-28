@@ -39,7 +39,7 @@ GUI=$(zenity --list --checklist \
 	--column=Description \
 	TRUE "Update System" "Updates the package lists, the system packages and Applications."  \
 	FALSE "Initial configuration" "Elementary OS ONLY! Disable single click and enable super as application hotkey" \
-	FALSE "Delete default apps" "Elementary OS ONLY! Delete mail, calendar, epiphany browser and audience" \
+	FALSE "Delete default apps" "Elementary OS ONLY! Delete scratch, mail, calendar, epiphany browser and audience" \
 	FALSE "Tweaks" "Elementary OS ONLY! Install Elementary Tweaks for additionnal options." \
 	TRUE "Speed-Up Memory Action" "Install preload and zRAM." \
 	TRUE "TLP" "Install TLP for better battery life." \
@@ -56,6 +56,7 @@ GUI=$(zenity --list --checklist \
 	TRUE "qbittorrent" "Install qbittorrent, BitTorrent client." \
 	TRUE "Time Shift" "Install timeshift for system restoration." \
 	TRUE "LibreOffice" "Installs LibreOffice. A powerful office suite." \
+	TRUE "Gedit" "Install Gedit the text editor"
 	TRUE "Vim" "Install Vim the text editor." \
 	TRUE "Visual Studio Code" "Install Visual Studio Code the text editor." \
 	TRUE "Boot Repair" "Install boot-repair for GRUB repairing." \
@@ -105,6 +106,8 @@ then
 	sudo apt purge maya-calendar -y
 	sudo apt purge epiphany-browser epiphany-browser-data -y
 	sudo apt purge audience -y
+	sudo apt-get purge scratch-text-editor -y
+
 fi
 
 # Speed-Up Memory Action
@@ -272,6 +275,15 @@ then
 	sudo add-apt-repository -y ppa:shimmerproject/daily
 	sudo apt -y update
 	sudo apt -y install libreoffice libreoffice-style-elementary
+fi
+
+# Install Gedit
+if [[ $GUI == *"Gedit"* ]]
+then
+	clear
+	echo "Gedit installation..."
+	echo ""
+	sudo apt-get install -y gedit gedit-plugins
 fi
 
 # Install Vim
