@@ -125,7 +125,7 @@ then
 	echo ""
 	sudo add-apt-repository -y ppa:linrunner/tlp
 	sudo apt -y update
-	sudo apt -y install tlp tlp-rdw tp-smapi-dkms acpi-call-dkms
+	sudo apt -y install tlp tlp-rdw
 	sudo tlp start
 fi
 
@@ -343,8 +343,8 @@ then
 	clear
 	echo "Dropbox installation..."
 	echo ""
-	sudo wget -O /tmp/dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
-	sudo gdebi --non-interactive /tmp/dropbox.deb
+	sudo git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
+	bash /tmp/elementary-dropbox/install.sh
 fi
 
 # Install spotify
@@ -385,9 +385,8 @@ then
 	clear
 	echo "Pushbullet installation..."
 	echo ""
-	sudo add-apt-repository -y ppa:atareao/pushbullet
-	sudo apt-get -y update
-	sudo apt-get -y install pushbullet-indicator
+	sudo wget -O /tmp/pushbullet.deb https://github.com/sidneys/pb-for-desktop/releases/download/v6.8.1/pb-for-desktop-6.8.1-amd64.deb
+	sudo gdebi --non-interactive /tmp/pushbullet.deb
 fi
 
 # Install Gufw
