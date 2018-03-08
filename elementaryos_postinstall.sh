@@ -129,6 +129,7 @@ then
 	sudo add-apt-repository -y ppa:linrunner/tlp
 	sudo apt -y update
 	sudo apt -y install tlp tlp-rdw
+	sudo apt -y install tp-smapi-dkms acpi-call-dkms
 	sudo tlp start
 fi
 
