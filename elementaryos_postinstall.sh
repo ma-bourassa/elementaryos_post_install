@@ -51,7 +51,7 @@ GUI=$(zenity --list --checklist \
 	TRUE "GParted" "Install GParted for system partition management." \
 	TRUE "Oracle Java 9" "Install Oracle Java 9 JDK." \
 	TRUE "Support for Archive Formats" "Installs support for archive formats." \
-	TRUE "Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
+	TRUE "Chrome" "Installs Chrome." \
 	TRUE "VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	TRUE "qbittorrent" "Install qbittorrent, BitTorrent client." \
 	TRUE "Time Shift" "Install timeshift for system restoration." \
@@ -228,13 +228,14 @@ then
 	sudo apt -y install unace rar unrar p7zip-rar p7zip zip unzip sharutils uudeview mpack arj cabextract
 fi
 
-# Install Chromium
-if [[ $GUI == *"Chromium"* ]]
+# Install Chrome
+if [[ $GUI == *"Chrome"* ]]
 then
 	clear
-	echo "Chromium installation..."
+	echo "Chrome installation..."
 	echo ""
-	sudo apt -y install chromium-browser
+	sudo wget -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sudo gdebi --non-interactive /tmp/google-chrome-stable_current_amd64.deb
 fi
 
 # Install VLC
