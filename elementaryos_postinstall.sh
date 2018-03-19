@@ -67,7 +67,7 @@ GUI=$(zenity --list --checklist \
 	TRUE "Spotify" "Install Spotify for music streaming." \
 	TRUE "Steam" "Install Steam, online game platform." \
 	TRUE "Skype" "Install Skype." \
-    TRUE "Pushbullet" "Install Pushbullet." \
+    	TRUE "Pushbullet" "Install Pushbullet." \
 	TRUE "Gufw" "Install Gufw firewall." \
 	TRUE "Fix Broken Packages" "Fixes the broken packages." \
 	TRUE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
