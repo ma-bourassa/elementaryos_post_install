@@ -56,7 +56,7 @@ GUI=$(zenity --list --checklist \
 	TRUE "qbittorrent" "Install qbittorrent, BitTorrent client." \
 	TRUE "Time Shift" "Install timeshift for system restoration." \
 	TRUE "LibreOffice" "Installs LibreOffice. A powerful office suite." \
-	TRUE "Gedit" "Install Gedit the text editor"
+	TRUE "Gedit" "Install Gedit the text editor" \
 	TRUE "Vim" "Install Vim the text editor." \
 	TRUE "Visual Studio Code" "Install Visual Studio Code the text editor." \
 	TRUE "Boot Repair" "Install boot-repair for GRUB repairing." \
