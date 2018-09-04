@@ -64,10 +64,8 @@ GUI=$(zenity --list --checklist \
 	TRUE "Neofetch" "Install Neofetch to show system information on terminal." \
 	TRUE "Gimp and GMIC" "Install GIMP and the extension GMIC." \
 	TRUE "Dropbox" "Install dropbox, for cloud sharing." \
-	TRUE "Spotify" "Install Spotify for music streaming." \
 	TRUE "Steam" "Install Steam, online game platform." \
-	TRUE "Skype" "Install Skype." \
-    	TRUE "Pushbullet" "Install Pushbullet." \
+	TRUE "RetroArch" "Install RetroArch, Frontend for emulators." \
 	TRUE "Gufw" "Install Gufw firewall." \
 	TRUE "Fix Broken Packages" "Fixes the broken packages." \
 	TRUE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
@@ -361,18 +359,6 @@ then
 	bash /tmp/elementary-dropbox/install.sh
 fi
 
-# Install spotify
-if [[ $GUI == *"Spotify"* ]]
-then
-	clear
-	echo "Spotify installation..."
-	echo ""
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-	sudo apt -y update
-	sudo apt -y install spotify-client
-fi
-
 # Install steam
 if [[ $GUI == *"Steam"* ]]
 then
@@ -383,24 +369,15 @@ then
 	sudo apt -y install steam
 fi
 
-# Install Skype
-if [[ $GUI == *"Skype"* ]]
+# Install RetroArch
+if [[ $GUI == *"RetroArch"* ]]
 then
 	clear
-	echo "Skype installation..."
+	echo "RetroArch installation..."
 	echo ""
-	sudo wget -O /tmp/skypeforlinux-64.deb https://go.skype.com/skypeforlinux-64.deb
-	sudo gdebi --non-interactive /tmp/skypeforlinux-64.deb
-fi
-
-# Install Pushbullet
-if [[ $GUI == *"Pushbullet"* ]]
-then
-	clear
-	echo "Pushbullet installation..."
-	echo ""
-	sudo wget -O /tmp/pushbullet.deb https://github.com/sidneys/pb-for-desktop/releases/download/v6.8.1/pb-for-desktop-6.8.1-amd64.deb
-	sudo gdebi --non-interactive /tmp/pushbullet.deb
+	sudo add-apt-repository -y ppa:libretro/stable  
+	sudo apt -y update 
+	sudo apt -y install retroarch libretro-*
 fi
 
 # Install Gufw
