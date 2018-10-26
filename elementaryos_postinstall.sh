@@ -44,29 +44,26 @@ GUI=$(zenity --list --checklist \
 	TRUE "Speed-Up Memory Action" "Install preload and zRAM." \
 	TRUE "TLP" "Install TLP for better battery life." \
 	TRUE "Build essential" "Install dpkg-dev, gcc, g++, libc and make." \
-	TRUE "ArcOSX Theme" "Install ArcOSX theme." \
+	TRUE "Arc Theme" "Install Arc theme." \
 	TRUE "Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	TRUE "Bleachbit" "Install bleachbit for system cleanup." \
 	TRUE "Open SSH" "Install Open SSH for remote connection." \
 	TRUE "GParted" "Install GParted for system partition management." \
-	TRUE "Oracle Java 9" "Install Oracle Java 9 JDK." \
+	TRUE "OpenJDK" "Install OpenJDK." \
 	TRUE "Support for Archive Formats" "Installs support for archive formats." \
 	TRUE "Chrome" "Installs Chrome." \
 	TRUE "VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	TRUE "qbittorrent" "Install qbittorrent, BitTorrent client." \
 	TRUE "Time Shift" "Install timeshift for system restoration." \
 	TRUE "LibreOffice" "Installs LibreOffice. A powerful office suite." \
-	TRUE "Gedit" "Install Gedit the text editor" \
 	TRUE "Vim" "Install Vim the text editor." \
 	TRUE "Visual Studio Code" "Install Visual Studio Code the text editor." \
 	TRUE "Boot Repair" "Install boot-repair for GRUB repairing." \
-	TRUE "Conky-Manager" "Install Conky-manager to configure conky." \
 	TRUE "Neofetch" "Install Neofetch to show system information on terminal." \
 	TRUE "Gimp and GMIC" "Install GIMP and the extension GMIC." \
 	TRUE "Dropbox" "Install dropbox, for cloud sharing." \
 	TRUE "Steam" "Install Steam, online game platform." \
 	TRUE "RetroArch" "Install RetroArch, Frontend for emulators." \
-	TRUE "Gufw" "Install Gufw firewall." \
 	TRUE "Fix Broken Packages" "Fixes the broken packages." \
 	TRUE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
 	--separator=', ');
@@ -82,15 +79,15 @@ then
 fi
 
 # Initial config
-if [[ $GUI == *"Initial configuratio"* ]]
+if [[ $GUI == *"Initial configuration"* ]]
 then
 	clear
 	echo "Initial configuration..."
 	echo ""
 	gsettings set org.gnome.mutter overlay-key "'Super_L'"
 	gsettings set org.pantheon.desktop.gala.behavior overlay-action "'wingpanel --toggle-indicator=app-launcher'"
-	gsettings set org.pantheon.terminal.settings cursor-shape 'I-Beam'
-	gsettings set org.pantheon.files.preferences single-click false
+	gsettings set io.elementary.terminal.settings cursor-shape 'I-Beam'
+	gsettings set io.elementary.files.preferences single-click false
 fi
 
 # Delete default apps
@@ -104,8 +101,6 @@ then
 	sudo apt purge maya-calendar -y
 	sudo apt purge epiphany-browser epiphany-browser-data -y
 	sudo apt purge audience -y
-	sudo apt-get purge scratch-text-editor -y
-
 fi
 
 # Speed-Up Memory Action
@@ -153,19 +148,20 @@ then
 	sudo apt -y update
 	sudo apt -y upgrade
 	sudo apt -y install elementary-tweaks
-	sudo apt-get -y install elementary-add-icons
+	sudo apt -y install elementary-add-icons
 	sudo apt install -y --reinstall plank
 	killall plank
 fi
 
-# Install ArcOSX theme
+# Install Arc theme
 if [[ $GUI == *"ArcOSX Theme"* ]]
 then
 	clear
-	echo "ArcOSX theme installation..."
+	echo "Arc theme installation..."
 	echo ""
-	sudo wget -O /tmp/osx-arc-collection_1.4.7_amd64.deb https://github.com/LinxGem33/OSX-Arc-Darker/releases/download/v1.4.7/osx-arc-collection_1.4.7_amd64.deb
-	sudo gdebi --non-interactive /tmp/osx-arc-collection_1.4.7_amd64.deb
+	sudo add-repository ppa:noobslab/themes
+	sudo apt update
+	sudo apt install arc-theme
 fi
 
 # Bleachbit
@@ -183,7 +179,7 @@ then
 	clear
 	echo "Open SSH installation..."
 	echo ""
-	sudo apt-get install -y openssh-client openssh-server
+	sudo apt install -y openssh-client openssh-server
 fi
 
 # Install Ubuntu Restricted Extras
@@ -205,20 +201,18 @@ then
 	sudo apt install -y gparted
 fi
 
-#Oracle Java 9
-if [[ $GUI == *"Oracle Java 9"* ]]
+#OpenJDK
+if [[ $GUI == *"OpenJDK"* ]]
 then
 	clear
-	echo "Oracle Java 9 installation..."
+	echo "OpenJDK installation..."
 	echo ""
-	sudo add-apt-repository ppa:webupd8team/java -y
 	sudo apt update
-	sudo apt install oracle-java9-installer -y
-	sudo apt install oracle-java9-set-default -y
-fi
+	sudo apt install default-jdk
+	fi
 
 # Support for Archive Formats
-if [[ $GUI == *"Support formats d'archivage"* ]]
+if [[ $GUI == *"Support for Archive Formats"* ]]
 then
 	clear
 	echo "Support for Archive Formats installation"
@@ -277,15 +271,6 @@ then
 	sudo apt -y install libreoffice libreoffice-style-elementary
 fi
 
-# Install Gedit
-if [[ $GUI == *"Gedit"* ]]
-then
-	clear
-	echo "Gedit installation..."
-	echo ""
-	sudo apt-get install -y gedit gedit-plugins
-fi
-
 # Install Vim
 if [[ $GUI == *"Vim"* ]]
 then
@@ -314,17 +299,6 @@ then
 	sudo add-apt-repository -y ppa:yannubuntu/boot-repair
 	sudo apt -y update
 	sudo apt -y install boot-repair
-fi
-
-# Install conky-manager
-if [[ $GUI == *"Conky-Manager"* ]]
-then
-	clear
-	echo "conky-manager installation..."
-	echo ""
-	sudo add-apt-repository -y ppa:teejee2008/ppa
-	sudo apt -y update
-	sudo apt -y install conky-manager
 fi
 
 # Install neofetch
@@ -377,20 +351,11 @@ then
 	echo ""
 	sudo add-apt-repository -y ppa:libretro/stable  
 	sudo apt -y update 
-	sudo apt -y install retroarch libretro-*
-fi
-
-# Install Gufw
-if [[ $GUI == *"Gufw"* ]]
-then
-	clear
-	echo "Gufw installation..."
-	echo ""
-	sudo apt -y install gufw
+	sudo apt -y install retroarch libretro-snes9x2010
 fi
 
 # Fix Broken Packages Action
-if [[ $GUI == *"Réparer les paquets cassés"* ]]
+if [[ $GUI == *"Fix broken packages"* ]]
 then
 	clear
 	echo "Fixing broken packages..."
