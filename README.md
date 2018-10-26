@@ -38,9 +38,5 @@ Gettext-Domain=io.elementary.files-pkexec
 # Supported platforms
 Tested on Elementary OS Juno 5.0. It should work on any Debian based system unless the opposite is mentioned in the description.
 
-# source	
-This script is inspired by :
-https://github.com/Devil505/elementaryos-postinstall
-
 # Status
 There is currently no known bug.
