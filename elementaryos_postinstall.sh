@@ -32,7 +32,7 @@ gdebi_check
 GUI=$(zenity --list --checklist \
 	--height 800 \
 	--width 900 \
-	--title="Script Post-Installation elementary OS 0.4.1 Loki" \
+	--title="Script Post-Installation elementary OS Juno 5.0" \
 	--text "Pick one or multiple Actions to execute." \
 	--column=Picks  \
 	--column=Actions \
