@@ -39,7 +39,7 @@ GUI=$(zenity --list --checklist \
 	--column=Description \
 	TRUE "Update System" "Updates the package lists, the system packages and Applications."  \
 	FALSE "Initial configuration" "Elementary OS ONLY! Disable single click and enable super as application hotkey" \
-	FALSE "Delete default apps" "Elementary OS ONLY! Delete scratch, mail, calendar, epiphany browser and audience" \
+	FALSE "Delete default apps" "Elementary OS ONLY! Delete mail, calendar, epiphany browser and audience" \
 	FALSE "Tweaks" "Elementary OS ONLY! Install Elementary Tweaks for additionnal options." \
 	TRUE "Speed-Up Memory Action" "Install preload and zRAM." \
 	TRUE "TLP" "Install TLP for better battery life." \
